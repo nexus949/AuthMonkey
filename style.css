@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    cursor: default;
+}
+
+:root{
+    --primary-color: #5B8BF7;
+    --secondary-color: white;
+    --body-color: #F7F7FF;
+    --primary-shadows: rgba(28, 0, 80, 0.06) 0 0.6em 1.2em;
+}
+
+html, body{
+    overflow-x: hidden;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--body-color);
+}
+
+.container{
+    width: 50%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* border: 2px solid black; */
+    padding: 15px;
+}
+
+.greetings h1{
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 50px;
+}
+
+.greetings h3, .insight-month{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.chart-sub-container, .input-sub-container, .summary-sub-container, .expense-sub-container{
+    margin-bottom: 20px;
+    background-color: var(--secondary-color);
+    border: none;
+    box-shadow: var(--primary-shadows);
+}
+
+.chart-sub-container{
+    width: 100%;
+    height: 250px;
+}
+
+.summary-sub-container{
+    width: 100%;
+    height: 100px;
+}
+
+.summary{
+    /*width and height full as its container "summary-sub-container"*/
+    width: 100%;
+    height: 100%;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    border-radius: 6.5px;
+}
+
+.summary > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.input-sub-container{
+    width: 100%;
+    height: 220px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+    box-shadow: none;
+    background-color: var(--body-color);
+}
+
+.expense-input, .set-budget{
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    box-shadow: var(--primary-shadows);
+}
+
+.expense-input{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.expense-title, .expense-amount, .expense-type{
+    margin-bottom: 12px;
+    padding: 5px;
+}
+
+.expense-title{
+    width: 100%;
+}
+
+.expense-amount, .expense-type{
+    width: calc(50% - 5px);
+}
+
+.expense-amount{
+    margin-right: 10px;
+}
+
+.set-budget-input{
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.add-expense-button, .set-budget-button{
+    width: 100px;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--primary-color);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    color: white;
+    transition: all 0.12s ease;
+}
+
+.set-budget-button{
+    height: 40px;
+}
+
+.add-expense-button:active, .set-budget-button:active{
+    scale: 0.92;
+}
+
+.expense-sub-container{
+    width: 100%;
+    min-height: 50px;
+    height: fit-content;
+    padding: 20px;
+}
+
+.expense-list-tag{
+    margin-bottom: 15px;
+}
+
+.expenses{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-left: 4px solid var(--primary-color);
+    padding: 0 15px;
+    margin: 0 0 15px 0;
+    font-size: 18px;
+}
+
+.fa-solid{
+    cursor: pointer;
+    color: var(--primary-color);
+    width: 20%;
+}
+
+.expense-list-title{
+    width: 40%;
+}
+
+.expense-list-amount{
+    width: 20%;
+}
+
+footer{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    margin: 50px 0;
+}
