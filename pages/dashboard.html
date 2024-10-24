@@ -12,13 +12,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./../public/styles/rootStyles.css">
+    <link rel="stylesheet" href="./../public/styles/dashboard.css">
+    <link rel="stylesheet" href="./../public/styles/navbar.css">
+
     <title>Expense tracker UI</title>
 </head>
 
 <body>
-    <div class="container">
+    <div class="dashboard-container">
 
+        <nav class="navbar">
+            <img src="./../public/images/budget-buddy.png" alt="Logo" class="logo">
+            <ul class="navEl">
+                <li class="navElement"><a href="#">Dashboard</a></li>
+                <li class="navElement"><a href="#" style="margin-right: 0;">Settings</a></li>
+            </ul>
+        </nav>
+        
         <div class="greetings">
             <h1>Hi Alex,</h1>
             <h3>here are your expense insights for <span class="insight-month">October</span> Month.</h3>

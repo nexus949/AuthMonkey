@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    cursor: default;
+}
+
+:root{
+    --primary-color: #5B8BF7;
+    --primary-font-color: black;
+    --secondary-color: white;
+    --body-color: #F7F7FF;
+    --primary-shadows: rgba(28, 0, 80, 0.06) 0 0.6em 1.2em;
+}

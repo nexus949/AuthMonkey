@@ -1,0 +1,43 @@
+.navbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.logo{
+    height: 40px;
+    cursor: pointer;
+}
+
+.navEl{
+    display: flex;
+    list-style-type: none;
+    padding: 10px 0 10px 10px;
+}
+
+.navElement > a{
+    text-decoration: none;
+    color: var(--primary-font-color);
+    margin-right: 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.navElement > a:hover{
+    color: var(--primary-color);
+}
+
+@media(max-width: 480px){
+
+    .logo{
+        height: 30px;
+    }
+
+    .navElement > a{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+}
