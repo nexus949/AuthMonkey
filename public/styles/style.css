@@ -1,114 +1,196 @@
-*{ user-select: none; }
-
 html, body{
     overflow-x: hidden;
 }
 
-body{
+body {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: var(--body-color);
 }
 
-.home-container{
+
+.home-container {
     width: 100%;
     height: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 15px;
-}
-
-.top{
-    width: 100%;
-    height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 50px;
+    text-align: center;
 }
 
-.heading h1{
-    font-family: "Dela Gothic One", sans-serif;
-    font-weight: 700;
-    font-size: 110px;
+.hero {
+    padding: 40px 20px 50px 20px;
+}
+
+.hero h1{
+    font-size: 80px;
     color: var(--primary-color);
+    font-family: "Dela Gothic One", serif;;
+    font-weight: 700;
+    margin: 0 0 10px;
 }
 
-.sub-heading h3{
-    font-family: "Dela Gothic One", sans-serif;;
-    font-weight: 500;
+.hero p{
+    font-size: 20px;
+    color: var(--primary-font-color);
+    font-family: "Dela Gothic One", serif;
+    margin: 10px 0 20px;
 }
 
-.middle{
-    width: 100%;
-    height: 300px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
-.features{
-    width: 270px;
-    height: 100%;
+.cta-button{
+    width: 200px;
+    height: 50px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 15px;
     border: none;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 18px;
-    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.features:nth-child(1), .features:nth-child(3){
+.cta-button:hover {
+    background-color: #4A7CD9; 
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.feature-card:nth-child(1), .feature-card:nth-child(3){
     background-color: var(--primary-color);
     color: var(--secondary-color);
 }
 
-.features:hover{
+.feature-card {
+    border-radius: 8px;
+    padding: 22px;
+    width: 280px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feature-card > *{
+    cursor: pointer;
+}
+
+.feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
-.features, .features > *{ cursor: pointer; }
-
-.fa-solid{
-    font-size: 32px;
-    margin-bottom: 20px;
+.feature-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-.card-heading{
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.card-sub-heading{
+.feature-card p {
     font-size: 16px;
 }
 
-.end{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.fa-solid {
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
-.endLine{
-    font-size: 22px;
+.already-have-an-accout, .login-button{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 20px 0 20px 0;
 }
 
-.brand{
+.login-button{
     color: var(--primary-color);
-    font-weight: 700;
-}
-
-.endLine a{
     text-decoration: none;
-    color: var(--primary-color);
     cursor: pointer;
-    font-weight: 700;
+    padding: 0;
 }
 
-.endLine a:hover{
+.login-button:hover{
     text-decoration: underline;
+}
+
+.footer {
+    padding: 20px;
+    font-size: 12px;
+    margin: 30px 0 0 0;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 25px 20px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        width: 180px;
+        font-size: 16px;
+    }
+
+    .features {
+        padding: 20px 10px;
+    }
+
+    .feature-card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .feature-card h3 {
+        font-size: 20px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+    }
+
+    .already-have-an-accout, .login-button {
+        font-size: 16px;
+    }
+
+    .already-have-an-accout{
+        padding: 15px 0 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .cta-button {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .footer {
+        font-size: 10px;
+    }
+
+    .footer a {
+        font-size: 10px;
+    }
 }
