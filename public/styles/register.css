@@ -1,14 +1,14 @@
-html, body{
+html, body {
     overflow-x: hidden;
 }
 
-body{
+body {
     width: 100vw;
     height: 100dvh;
     background-color: var(--body-color);
 }
 
-.register-container{
+.register-container {
     width: 100%;
     height: 100%;
     max-width: 1200px;
@@ -19,56 +19,64 @@ body{
     padding: 15px;
 }
 
-#register-form{
+#register-form {
     background-color: var(--secondary-color);
     border: none;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 470px;
-    height: 570px;
+    width: 480px;
+    max-width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    box-sizing: border-box;
 }
 
-.register-page-logo{
+.register-page-logo {
     width: 100px;
     height: 40px;
     margin-bottom: 15px;
 }
 
-.register-heading{
+.register-heading {
     font-weight: 700;
     font-size: 30px;
     margin-bottom: 20px;
     color: var(--primary-color);
 }
 
-.name-and-surname-divs{
+.first-name-and-last-name-divs {
     width: 100%;
-    height: auto;
     display: flex;
+    gap: 10px;
 }
 
-.name-div, .surname-div{
-    width: 50%;
-}
-
-.name-label, .surname-label, .email-label, .password-label{
+.first-name-label, .last-name-label, .email-label, .password-label, .confirm-password-label {
     font-size: 18px;
     margin: 20px 0 5px 0;
     font-weight: 600;
 }
 
-.name, .surname, .email, .password{
+.password-validation-message, .confirm-password-validation-message{
+    font-size: 12px;
+    color: red;
+}
+
+.first-name, .last-name, .email, .password, .confirm-password {
     width: 100%;
     height: 45px;
     padding: 8px;
     cursor: text;
+    border: 1.8px solid;
+    outline: none;
 }
 
-.surname-div{ margin-left: 10px; }
+input:focus{
+    border: 1.8px solid var(--primary-color);
+}
 
-.register-button{
+.register-button {
     width: 100%;
     height: 45px;
     border: none;
@@ -81,70 +89,100 @@ body{
     transition: all 0.2s ease;
 }
 
-.register-button:hover{
+.register-button:hover {
     transform: translateX(5px);
     cursor: pointer;
 }
 
-.login{
+.login {
     font-size: 18px;
     margin-top: 20px;
     text-align: center;
 }
 
-.login a{
+.login a {
     text-decoration: none;
     cursor: pointer;
     color: var(--primary-color);
     font-weight: 600;
 }
 
-.login a:hover{
+.login a:hover {
     text-decoration: underline;
 }
 
-@media(max-width: 480px){
-    #register-form{
-        height: 600px;
-        max-height: auto;
+@media (max-width: 768px) {
+    #register-form {
+        padding: 15px;
     }
 
-    .register-page-logo{
+    .register-page-logo {
+        width: 90px;
+        height: 35px;
+    }
+
+    .register-heading {
+        font-size: 26px;
+    }
+
+    .first-name-div, .last-name-div {
+        width: 100%;
+        height: auto;
+    }
+
+    .first-name-label, .last-name-label, .email-label, .password-label, .confirm-password-label {
+        font-size: 17px;
+    }
+
+    .register-button {
+        font-size: 22px;
+        height: 45px;
+    }
+
+    .login {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #register-form {
+        padding: 10px;
+    }
+
+    .register-page-logo {
         width: 80px;
         height: 30px;
     }
-    
-    .register-heading{
+
+    .register-heading {
         font-size: 22px;
-        margin-bottom: 0;
-    }
-    
-    .name-and-surname-divs{
-        flex-direction: column;
-    }
-    
-    .name-div, .surname-div{
-        width: 100%;
-        margin-top: 20px;
+        margin-bottom: 10px;
     }
 
-    .name-label, .surname-label, .email-label, .password-label{
+    .first-name-and-last-name-divs {
+        flex-direction: column;
+    }
+
+
+    .first-name-label, .email-label, .password-label, .confirm-password-label {
         font-size: 16px;
     }
-    
-    .name, .surname, .email, .password{
+
+    .first-name-div, .last-name-div{
+        margin-top: 10px;
+    }
+    .first-name, .last-name, .email, .password, .confirm-password {
         height: 40px;
         padding: 5px;
     }
-    
-    .surname-div{ margin-left: 0; }
-    
-    .register-button{
+
+    .register-button {
         height: 40px;
-        font-size: 22px;
+        font-size: 20px;
     }
-    
-    .login{
+
+    .login {
         font-size: 15px;
+        margin-top: 15px;
     }
 }

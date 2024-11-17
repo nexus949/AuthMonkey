@@ -22,9 +22,10 @@ body{
 #login-form{
     background-color: var(--secondary-color);
     border: none;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 450px;
-    height: 600px;
+    height: auto;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -53,6 +54,12 @@ body{
     height: 50px;
     padding: 8px;
     cursor: text;
+    border: 1.8px solid;
+    outline: none;
+}
+
+input:focus{
+    border: 1.8px solid var(--primary-color);
 }
 
 .forgot-password{
@@ -87,7 +94,7 @@ body{
 
 .register{
     font-size: 18px;
-    margin-top: 40px;
+    margin: 40px 0 10px 0;
     text-align: center;
 }
 
@@ -100,4 +107,31 @@ body{
 
 .register a:hover{
     text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-heading {
+        font-size: 26px;
+    }
+
+    .login-page-logo {
+        width: 80px;
+        height: 35px;
+    }
+
+    .email-label, .password-label {
+        font-size: 16px;
+    }
+
+    .email, .password, .login-button {
+        height: 40px;
+    }
+
+    .login-button {
+        font-size: 20px;
+    }
+
+    .register {
+        font-size: 14px;
+    }
 }

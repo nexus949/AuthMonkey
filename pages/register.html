@@ -12,41 +12,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./../public/styles/rootStyles.css">
-    <link rel="stylesheet" href="./../public/styles/register.css">
+    <link rel="stylesheet" href="/styles/rootStyles.css">
+    <link rel="stylesheet" href="/styles/register.css">
     <title>Budget Buddy | User registration</title>
 </head>
 
 <body>
     <div class="register-container">
-        <form action="#" id="register-form">
-            <img src="./../public/images/budget-buddy.png" class="register-page-logo">
+        <form action="/register" method="post" id="register-form">
+            <img src="/images/budget-buddy.png" class="register-page-logo">
 
             <h2 class="register-heading">Create a new Account</h2>
 
-            <div class="name-and-surname-divs">
-                <div class="name-div">
-                    <label for="name" class="name-label">Name</label>
-                    <input type="text" placeholder="Enter your Name" class="name" name="name">
+            <div class="first-name-and-last-name-divs">
+                <div class="first-name-div">
+                    <label for="firstName" class="first-name-label">First Name</label>
+                    <input type="text" placeholder="Enter your First Name" class="first-name" name="firstName" required>
                 </div>
 
-                <div class="surname-div">
-                    <label for="surname" class="surname-label">Surame</label>
-                    <input type="text" placeholder="Enter your Surname" class="surname" name="surname">
+                <div class="last-name-div">
+                    <label for="lastName" class="last-name-label">Last Name</label>
+                    <input type="text" placeholder="Enter your Last Name" class="last-name" name="lastName" required>
                 </div>
             </div>
 
             <label for="email" class="email-label">Email</label>
-            <input type="text" placeholder="Enter your Email" class="email" name="email">
+            <input type="text" placeholder="Enter your Email" class="email" name="email" required>
 
             <label for="password" class="password-label">Password</label>
-            <input type="password" placeholder="Enter your Password" class="password" name="password">
+            <input type="password" placeholder="Enter your Password" class="password" name="password" required>
+            
+            <label for="confirmPassword" class="confirm-password-label">Confirm Password</label>
+            <input type="password" placeholder="Confirm your Password" class="confirm-password" name="confirmPassword" required>
 
-            <button type="submit" class="register-button">Go <i class="fa-solid fa-arrow-right"></i></button>
+            <button type="submit" class="register-button" disabled>Go <i class="fa-solid fa-arrow-right"></i></button>
             <div class="login">
-                <p>Already have an account ? <a href="#">Login Here</a></p>
+                <p>Already have an account ? <a href="/login">Login Here</a></p>
             </div>
         </form>
+
+        <script src="/scripts/register.js"></script>
     </div>
 </body>
 

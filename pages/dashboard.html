@@ -12,21 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./../public/styles/rootStyles.css">
-    <link rel="stylesheet" href="./../public/styles/dashboard.css">
-    <link rel="stylesheet" href="./../public/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/rootStyles.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
 
-    <title>Expense tracker UI</title>
+    <title>Budget Buddy | Dashboard</title>
 </head>
 
 <body>
     <div class="dashboard-container">
 
         <nav class="navbar">
-            <img src="./../public/images/budget-buddy.png" alt="Logo" class="logo">
+            <img src="/images/budget-buddy.png" alt="Logo" class="logo">
             <ul class="navEl">
-                <li class="navElement"><a href="#">Dashboard</a></li>
-                <li class="navElement"><a href="#" style="margin-right: 0;">Settings</a></li>
+                <li class="navElement"><a href="/dashboard">Dashboard</a></li>
+                <li class="navElement"><a href="/settings" style="margin-right: 0;">Settings</a></li>
             </ul>
         </nav>
         
@@ -36,10 +36,13 @@
         </div>
 
         <div class="chart-sub-container">
-            <div class="chart"></div>
+            <div class="chart">
+                <canvas id="expense-chart-canvas"></canvas>
+            </div>
         </div>
 
         <div class="summary-sub-container">
+
             <div class="summary">
                 <div class="budget">
                     <p>Budget</p>
@@ -54,6 +57,7 @@
                     <p>5000</p>
                 </div>
             </div>
+
         </div>
 
         <div class="input-sub-container">
@@ -68,6 +72,10 @@
                     <option value="debit">Debit</option>
                     <option value="credit">Credit</option>
                 </select>
+
+                <input type="date" placeholder="Enter expense date"  class="expense-date"></input>
+                <button class="insert-today-button">Insert Today</button>
+
                 <button class="add-expense-button">Add Expense</button>
             </div>
 
