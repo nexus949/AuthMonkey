@@ -1,36 +1,16 @@
+import * as utils from '/scripts/userUtils.js'
+
 document.addEventListener('DOMContentLoaded', () => {
-
-    /*account deletion button naming scheme -> 
-
-    1. confirmation buttons -> This will take you to the "provide password to delete your account" window.
-    2. activation buttons -> This will delete the account provided the password for the account is correct.
-    
-    similar naming scheme with the cancellation buttons...
-    */
-
     //acc deletion confirmation popup
     let confirmationPopup = document.querySelector('.deletion-confirmation-popup');
-
-    //acc deletion activation popup
-    let activationPopup = document.querySelector('.deletion-activation-popup');
-
-    //acc deletion confirmation button
-    let confirmAccountDeletionButton = document.querySelector('.delete-account-yes');
-
-    //cancel acc deletion confirmation button
-    let notConfirmAccountDeletionButton = document.querySelector('.delete-account-cancel');
-
-    //acc deletion activation button
-    let activateAccountDeletionButton = document.querySelector('.confirm-delete-account-button');
-
-    //cancel acc deletion activation button
-    let notActivateAccountDeletionButton = document.querySelector('.cancel-delete-account-button');
-
+    //acc deletion button
+    let accountDeletionButton = document.querySelector('.delete-account-yes');
+    //cancel acc deletion button
+    let cancelAccountDeletionButton = document.querySelector('.delete-account-cancel');
     //logout buttons
     let logoutButton = document.querySelector('.logout-button');
     let logoutPopup = document.querySelector('.logout-popup')
-    let confirmLogoutButton = document.querySelector('.logout-yes');
-    let notConfirmLogoutButton = document.querySelector('.logout-cancel');
+    let cancelLogoutButton = document.querySelector('.logout-cancel');
 
     let deleteAccountButton = document.querySelector('.delete-account-button');
 
@@ -51,78 +31,183 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     deleteAccountButton.addEventListener('click', () => {
+        document.querySelector('.deletion-password').value = ''
         showPopup(confirmationPopup);
     });
 
-    //are you sure you want to delete your account ? -> YES
-    confirmAccountDeletionButton.addEventListener('click', () => {
-        confirmationPopup.style.display = 'none';
-        activationPopup.style.display = 'block';
-    });
-
     //are you sure you want to delete your account ? -> CANCEL
-    notConfirmAccountDeletionButton.addEventListener('click', () => {
+    cancelAccountDeletionButton.addEventListener('click', () => {
         hidePopup(confirmationPopup);
     });
 
-    //Confirm password for account deletion -> CANCEL
-    notActivateAccountDeletionButton.addEventListener('click', () => {
-        hidePopup(activationPopup);
-    });
-
-    logoutButton.addEventListener('click', () =>{
+    logoutButton.addEventListener('click', () => {
         showPopup(logoutPopup);
     })
 
-    notConfirmLogoutButton.addEventListener('click', () =>{
+    cancelLogoutButton.addEventListener('click', () => {
         hidePopup(logoutPopup);
     })
 
     // Close popup when clicking outside
     overlay.addEventListener('click', () => {
         hidePopup(confirmationPopup);
-        hidePopup(activationPopup);
         hidePopup(logoutPopup);
     });
 
+    //this function sends a password change request to the server
+    function sendPasswordChangeReq(e) {
+        e.preventDefault();
+
+        let currentPasswordField = document.querySelector('.current-password-field');
+        let newPasswordField = document.querySelector('.new-password-field');
+        let confirmNewPasswordField = document.querySelector('.confirm-new-password-field');
+        let passwordButton = document.querySelector('.update-pass-button');
+
+        passwordButton.addEventListener('click', async function () {
+            if (currentPasswordField.value === '' || newPasswordField.value === '' || confirmNewPasswordField.value === '') return;
+
+            const formData = new FormData(e.target);
+            const data = {};
+
+            formData.forEach((value, key) => data[key] = value);
+
+            let response = await fetch('/user/settings/changePassword', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            response = await response.json();
+            if (response.ok) {
+                console.log(response.message);
+            }
+            else {
+                console.log(response.message);
+                let message = utils.createMessageDiv(response.message);
+                document.querySelector('.account-deletion-confirmation').append(message);
+                setInterval(() => { message.remove(); }, 5000);
+            };
+        })
+    }
+
     //dynamic input for password change
-    let changePasswordSettings = document.querySelector('#change-password-send-request-form');
+    function changePasswordSettings() {
+        let changePassButton = document.querySelector('.change-password-button');
 
-    let confirmOldPassword = document.createElement('input');
-    let resetPassButton = document.createElement('button');
+        changePassButton.addEventListener('click', () => {
+            changePassButton.classList.add('disabled-buttons');
+            changePassButton.disabled = true;
 
-    resetPassButton.textContent = 'Change Password';
-    resetPassButton.classList.add('reset-pass-button');
+            let passwordChangeForm = document.querySelector('#change-password-send-request-form');
+            passwordChangeForm.style.display = 'block';
 
-    confirmOldPassword.placeholder = 'Enter current Password';
-    confirmOldPassword.required = true;
-    confirmOldPassword.classList.add('confirm-old-password');
+            passwordChangeForm.addEventListener('submit', function (e) {
+                sendPasswordChangeReq(e);
+            })
+        })
+    }
+    changePasswordSettings();
 
-    document.querySelector('.change-password-button').addEventListener('click', function(){
-        changePasswordSettings.append(confirmOldPassword);
-        changePasswordSettings.append(resetPassButton);
-        this.disabled = true;
-        this.classList.add('disabled-buttons');
-    })
-
-    //change the info save function button to not disabled state if there is any change in the input fields
-    let inputs = document.querySelectorAll('.name-input-field, .surname-input-field, .email-input-field');
+    //change the info save button to not disabled state if there is any change in the input fields
+    let inputs = document.querySelectorAll('.first-name-input-field, .last-name-input-field, .email-input-field');
     let saveButton = document.querySelector('.info-submit-button');
-    
-    inputs.forEach(input =>{
+
+    inputs.forEach(input => {
         input.addEventListener('input', () =>{
-            let defaultValue = input.defaultValue;
-            
-            if(defaultValue !== input.value){
-                saveButton.disabled = false;
-                saveButton.classList.add('non-disabled-buttons');
-                saveButton.classList.remove('disabled-buttons');
-            }
-            else{
-                saveButton.disabled = true;
-                saveButton.classList.add('disabled-buttons');
-                saveButton.classList.remove('non-disabled-buttons');
-            }
+            //from the nodeList of inputs return true if some of its value has changed (return true if condition is met)
+            let hasChanged = Array.from(inputs).some(inputField => inputField.value !== inputField.defaultValue);
+
+            //enabled the saveButton if there is a change in the input fields. (hasChanged = true then saveButton.disabled = false [!hasChanged])
+            saveButton.disabled = !hasChanged
+            saveButton.classList.toggle('non-disabled-buttons', hasChanged);
+            saveButton.classList.toggle('disabled-buttons', !hasChanged);
         })
     })
+
+    async function setUserData() {
+        const data = await utils.getUserData();
+
+        document.querySelector('.first-name-input-field').defaultValue = data.firstName;
+        document.querySelector('.last-name-input-field').defaultValue = data.lastName;
+        document.querySelector('.email-input-field').defaultValue = data.email;
+    }
+    setUserData();
+
+    //updates user data
+    function updateUserData() {
+        let infoForm = document.querySelector('#info-change-form');
+
+        infoForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = {};
+
+            formData.forEach((value, key) => data[key] = value);
+
+            let response = await fetch('/user/settings/updateInfo', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            let jsonResponse = await response.json();
+
+            if (response.ok) {
+                console.log(jsonResponse);
+
+                sessionStorage.clear();
+                await utils.fetchUserData();
+                setUserData();
+            }
+
+        })
+    }
+    updateUserData();
+
+    function logOutUser() {
+        document.querySelector('.logout-yes').addEventListener('click', async function (e) {
+            e.preventDefault();
+
+            let response = await fetch('/user/settings/logout', {
+                method: 'POST'
+            });
+
+            if (response.ok) {
+                sessionStorage.clear();
+                window.location.href = '/user/login';
+            }
+        })
+    }
+    logOutUser();
+
+    function deleteUserAccount() {
+        accountDeletionButton.addEventListener('click', async function () {
+            let deletionPasswordField = document.querySelector('.deletion-password');
+            if (deletionPasswordField.value === '') return;
+
+            let response = await fetch('/user/settings/deleteUser', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ password: deletionPasswordField.value.trim() })
+            });
+
+            if (response.ok) {
+                window.location.href = '/'
+            }
+            else {
+                response = await response.json();
+                let message = utils.createMessageDiv(response.message);
+                document.querySelector('.account-deletion-confirmation').append(message);
+                setInterval(() => { message.remove(); }, 5000);
+            };
+        })
+    }
+    deleteUserAccount();
 });

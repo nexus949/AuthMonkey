@@ -41,29 +41,29 @@ body{
     height: fit-content;
 }
 
-.name-and-surname{
+.first-name-and-last-name{
     width: 100%;
     height: fit-content;
     display: flex;
 }
 
-.name, .surname, .email{
+.first-name, .last-name, .email, .password{
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
 }
 
-.surname{
+.last-name{
     margin-left: 20px;
 }
 
-.label-for-name, .label-for-surname, .label-for-email{
+.label-for-first-name, .label-for-last-name, .label-for-email, .label-for-password{
     font-weight: 600;
     font-size: 18px;
     margin-bottom: 5px;
 }
 
-.name-input-field, .surname-input-field, .email-input-field, .confirm-old-password{
+.first-name-input-field, .last-name-input-field, .email-input-field, .password-input-field, .confirm-current-password, .current-password-field, .new-password-field, .confirm-new-password-field{
     font-size: 16px;
     padding: 5px;
     width: 200px;
@@ -75,17 +75,23 @@ body{
     cursor: text;
 }
 
-.confirm-old-password{
-    width: 250px;
-    padding: 8px;
-    margin: 0 15px;
+.current-password-field, .new-password-field, .confirm-new-password-field{ 
+    display: block;
+    margin-bottom: 15px;
+    width: 350px;
 }
 
 .email-input-field{
     width: 420px; /*Width of name and email fields + the extra margin on the surname field*/
 }
 
-.info-submit-button, .change-password-button, .logout-button, .delete-account-button, .reset-pass-button{
+.password-input-field{
+    width: 420px;
+}
+
+#change-password-send-request-form{ display: none; }
+
+.info-submit-button, .change-password-button, .logout-button, .delete-account-button, .update-pass-button{
     width: 150px;
     height: 40px;
     border: none;
@@ -99,7 +105,15 @@ body{
     margin: 10px 0;
 }
 
-.reset-pass-button{ 
+.change-password-button{ margin-bottom: 15px; }
+
+.confirm-current-password{
+    width: 250px;
+    padding: 8px;
+    margin: 0 15px;
+}
+
+.update-pass-button{ 
     width: 180px; 
 }
 
@@ -107,11 +121,7 @@ body{
     width: 200px;
 }
 
-.non-disabled-buttons{
-    opacity: 100%;
-}
-
-.info-submit-button:active, .change-password-button:active, .logout-button:active, .delete-account-button:active, .reset-pass-button:active, .non-disabled-buttons{
+.info-submit-button:active, .change-password-button:active, .logout-button:active, .delete-account-button:active, .reset-pass-button:active{
     scale: 0.92;
 }
 
@@ -151,7 +161,6 @@ footer{
 }
 
 /*popups styles*/
-
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -163,12 +172,13 @@ footer{
     z-index: 999; /* Ensures it's on top of the background content */
 }
 
-.deletion-confirmation-popup, .deletion-activation-popup, .logout-popup{
+.deletion-confirmation-popup, .logout-popup{
     width: 600px;
     height: 300px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 15px;
+    text-align: justify;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -178,33 +188,29 @@ footer{
     z-index: 1000; /* Above the overlay */
 }
 
-#deletion-confirmation-form, #deletion-activation-form, #logout-form{
-    width: 100%;
-    height: 100%;
-    text-align: justify;
-    padding: 10px;
-}
+.deletion-confirmation-popup{ height: 330px; }
 
 .logo{
     margin-bottom: 15px;
 }
 
-#deletion-confirmation-form p{
-    font-size: 18px;
-    margin: 20px 0;
+.account-deletion-warning, .account-deletion-confirmation{
+    font-size: 15px;
+    margin: 15px 0;
 }
 
-#logout-form p{ margin-bottom: 20px; }
+.logout-popup p{ margin-bottom: 20px; }
 
 .account-deletion-confirmation, .logout-confirmation{
     font-weight: 600;
 }
 
-.delete-account-yes, .delete-account-cancel, .confirm-delete-account-button, .cancel-delete-account-button, .logout-yes, .logout-cancel{
-    width: 100px;
-    height: 40px;
+.delete-account-yes, .delete-account-cancel, .logout-yes, .logout-cancel{
+    width: auto;
+    height: 45px;
     border: none;
     border-radius: 5px;
+    padding: 8px;
     background-color: var(--primary-color);
     color: var(--secondary-color);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -213,11 +219,11 @@ footer{
     transition: all 0.2s ease;
 }
 
-.delete-account-yes, .confirm-delete-account-button, .logout-yes{ margin-right: 10px; }
+.delete-account-yes, .delete-account-cancel{ font-size: 14px; }
+ 
+.delete-account-yes, .logout-yes{ margin-right: 10px; }
 
-.confirm-delete-account-button{ width: 200px; }
-
-.delete-account-yes:hover, .delete-account-cancel:hover, .confirm-delete-account-button:hover, .cancel-delete-account-button:hover, .logout-yes:hover, .logout-cancel:hover{
+.delete-account-yes:hover, .delete-account-cancel:hover, .cancel-delete-account-button:hover, .logout-yes:hover, .logout-cancel:hover{
     transform: translateY(-3px);
 }
 
@@ -252,8 +258,17 @@ footer{
     scale: none;
 }
 
+.non-disabled-buttons{ 
+    opacity: 100%;
+    scale: 0.92; 
+}
+
+.account-deletion-warning{
+    margin-top: 0;
+}
+
 @media(max-width: 1028px){
-    .confirm-old-password{
+    .confirm-current-password{
         margin-left: 0;
     }
 
@@ -292,7 +307,7 @@ footer{
         font-size: 16px;
     }
 
-    .name-input-field, .surname-input-field, .email-input-field, .confirm-old-password{
+    .first-name-input-field, .last-name-input-field, .email-input-field, .confirm-current-password{
         font-size: 14px;
         width: 165px;
     }
@@ -301,7 +316,7 @@ footer{
         font-size: 15px;
     }
 
-    .confirm-old-password{
+    .confirm-current-password{
         width: 180px;
         margin-left: 0;
     }

@@ -68,7 +68,7 @@ input:focus{
     align-items: center;
 }
 
-.forgot-password p:hover{
+.forgot-password a:hover{
     color: var(--primary-color);
     text-decoration: underline;
     cursor: pointer;
@@ -98,11 +98,15 @@ input:focus{
     text-align: center;
 }
 
-.register a{
+.register a, .forgot-password a{
     text-decoration: none;
     cursor: pointer;
     color: var(--primary-color);
     font-weight: 600;
+}
+
+.forgot-password a{
+    color: var(--primary-font-color);
 }
 
 .register a:hover{

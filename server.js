@@ -28,9 +28,9 @@ let loginAndRegisterRoutes = require('./routes/loginAndRegisterRoutes.js');
 let dashboardRoutes = require('./routes/dashboardRoutes.js');
 let settingsRoutes = require('./routes/settingsRoute.js');
 
-app.use('/', loginAndRegisterRoutes);
-app.use('/', dashboardRoutes);
-app.use('/', settingsRoutes);
+app.use('/user', loginAndRegisterRoutes);
+app.use('/user', dashboardRoutes);
+app.use('/user', settingsRoutes);
 
 app.listen(port, () =>{
     console.log("listening on port " + port);

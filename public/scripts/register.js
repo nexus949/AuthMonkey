@@ -114,7 +114,7 @@ document.querySelector('#register-form').addEventListener('submit', async functi
     formData.forEach((value, key) => data[key] = value);
 
     try {
-        const response = await fetch('/register', {
+        const response = await fetch('/user/register', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -123,17 +123,12 @@ document.querySelector('#register-form').addEventListener('submit', async functi
         });
 
         if (response.ok) {
-            window.location.href = '/dashboard';
+            window.location.href = '/user/dashboard';
         }
         else{
             const errorData = await response.json();
             console.log(errorData);
         }
-
-        // if(!response.ok){
-        //     const errorData = await response.json();
-        //     console.log(error);
-        // }
     }
     catch (error) {
         console.error("Error:", error);

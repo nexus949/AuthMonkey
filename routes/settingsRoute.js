@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const path = require('node:path');
+const { authenticate, generateToken } = require('./../auth.js');
 
-router.get('/settings', async (req, res)=>{
-    try{
-        res.status(200).sendFile(path.join(__dirname, './../pages/settings.html'));
-    }
-    catch(error){
-        console.log(error);
-        res.status(500).json("Some error occured");
-    }
-})
+const {
+
+    getSettingsPage,
+    updateInfo,
+    logoutUser,
+    changeUserPassword,
+    deleteAnUser
+
+} = require('./../controllers/settingsController.js');
+
+router.get('/settings', authenticate, getSettingsPage);
+router.put('/settings/updateInfo', authenticate, updateInfo);
+router.put('/settings/changePassword', authenticate, changeUserPassword);
+router.post('/settings/logout', authenticate, logoutUser);
+router.delete('/settings/deleteUser', authenticate, deleteAnUser);
 
 module.exports = router;
