@@ -41,13 +41,19 @@ export async function fetchUserData() {
 }
 
 //create message divs that display error messages recieved from the server
-export function createMessageDiv(message, whereToAppend) {
+export function createMessageDiv(message) {
     let responseMessage = document.createElement('div');
     responseMessage.innerHTML = message;
     responseMessage.classList.add('response-messages');
     return responseMessage;
 }
 
-export function removeMessageDiv(div){
-    div.remove();
+export function showErrorMsg(element, message){
+    //check if a message is already existing, if yes remove it immediately !
+    let existingMsg = element.querySelector('div');
+    if(existingMsg) existingMsg.remove();
+
+    let responseMsg = createMessageDiv(message);
+    element.append(responseMsg);
+    setTimeout( () => { responseMsg.remove() }, 8000);
 }

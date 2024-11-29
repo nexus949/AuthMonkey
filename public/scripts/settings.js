@@ -31,7 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     deleteAccountButton.addEventListener('click', () => {
-        document.querySelector('.deletion-password').value = ''
+        //remove any input in the account deletion popup
+        document.querySelector('.deletion-password').value = '';
+    
+        //remove error messages if any present
+        let confirmationText = document.querySelector('.account-deletion-confirmation');
+        if(confirmationText.childElementCount === 1) confirmationText.firstElementChild.remove(); 
+
         showPopup(confirmationPopup);
     });
 
@@ -85,9 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             else {
                 console.log(response.message);
-                let message = utils.createMessageDiv(response.message);
-                document.querySelector('.account-deletion-confirmation').append(message);
-                setInterval(() => { message.remove(); }, 5000);
+                utils.showErrorMsg(document.querySelector('.account-deletion-confirmation'), response.message);
             };
         })
     }
@@ -203,9 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             else {
                 response = await response.json();
-                let message = utils.createMessageDiv(response.message);
-                document.querySelector('.account-deletion-confirmation').append(message);
-                setInterval(() => { message.remove(); }, 5000);
+                utils.showErrorMsg(document.querySelector('.account-deletion-confirmation'), response.message);
             };
         })
     }

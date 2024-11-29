@@ -1,3 +1,5 @@
+import * as utils from '/scripts/userUtils.js'
+
 document.addEventListener('DOMContentLoaded', () =>{
     //clear sessionStorage if any
     sessionStorage.clear();
@@ -25,6 +27,16 @@ document.addEventListener('DOMContentLoaded', () =>{
             else{
                 const errorData = await response.json();
                 console.log(errorData);
+
+                if(response.status === 404){
+                    utils.showErrorMsg(document.querySelector('.email-label'), errorData.message);
+                }   
+                else if(response.status === 401){
+                    utils.showErrorMsg(document.querySelector('.password-label'), errorData.message);
+                }
+                else{
+                    alert(errorData.message);
+                }
             }
         }
         catch (error) {

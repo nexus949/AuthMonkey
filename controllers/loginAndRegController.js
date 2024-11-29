@@ -26,11 +26,15 @@ async function getLoginPage(req, res){
 async function createNewUser(req, res){
     try{
         const recievedRegisterData = req.body;
-        
-        if(!recievedRegisterData || Object.keys(recievedRegisterData).length === 0 ) res.status(401).send("Invalid Data !");
+        if(!recievedRegisterData || Object.keys(recievedRegisterData).length === 0 ) res.status(401).send({ message: "Invalid Data !" });
 
         // validation if the user is already present
-        if(await userModel.findOne({ email: recievedRegisterData.email })) return res.status(409).json("User Already Exists !");
+        if(await userModel.findOne({ email: recievedRegisterData.email })) return res.status(409).json({ message: "User Already Exists !" });
+
+        //email regex (checks if the email format is a valid one)
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let email = recievedRegisterData.email;
+        if(!emailRegex.test(email)) return res.status(400).json({ message: "Invalid Email !" });
 
         const newUser = new userModel(recievedRegisterData);
         newUser.password = await hashPassword(newUser.password);
@@ -68,10 +72,10 @@ async function loginUser(req, res){
         const { email, password } = req.body;
     
         let user = await userModel.findOne({ email: email });
-        if(!user) return res.status(404).json("User Not Found !");
+        if(!user) return res.status(404).json({ message: "User Not Found !" });
 
         let isValidPassword = await verifyPassword(user.password, password);
-        if(!isValidPassword) return res.status(401).json("Incorrect Password !");
+        if(!isValidPassword) return res.status(401).json({ message: "Incorrect Password !" });
 
         let payload = {
             id: user.id,
