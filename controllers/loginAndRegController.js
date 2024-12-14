@@ -140,11 +140,11 @@ async function sendResetPassLink(req, res) {
         });
         const resetLink = `http://localhost:3000/user/password/resetPassword/${encodedId}`;
         const reciever = {
-            from: 'noreply.mailbox.bot@gmail.com',
-            to: 'akarmakar.0999@gmail.com',
-            subject: 'Password reset request',
+            from: process.env.MAIL_ID,
+            to: user.email,
+            subject: 'Auth Monkey - Password reset request',
             html: `<b>This is an automated email, please do not reply to this email.</b><br>
-            You are recieveing this because you have reqeuested a password reset request from BudgetBuddy.<br><br>
+            You are recieveing this because you have reqeuested a password reset request from Auth Monkey.<br><br>
             <b>Below Given is the password reset link</b>, click this link to go to the password reset page.<br><br>
             <b>This link is only valid for 10 minutes !</b><br><br>
             <a href="${resetLink}">Click Here to reset your Password</a><br><br>
