@@ -25,18 +25,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required !"]
     },
-
-    userBalance: {
-        type: Number,
-        default: 0,
-        min: 0
-    },
-
-    userBudget: {
-        type: Number,
-        default: 0,
-        min: 0
-    }
 });
 
 const user = mongoose.model('user', userSchema);
