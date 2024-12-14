@@ -1,5 +1,5 @@
 {
-  "name": "budget-buddy",
+  "name": "auth-monkey",
   "version": "1.0.0",
   "description": "simple expense tracker",
   "main": "server.js",
