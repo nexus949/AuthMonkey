@@ -138,7 +138,7 @@ async function sendResetPassLink(req, res) {
                 pass: process.env.MAIL_PASS,
             }
         });
-        const resetLink = `http://localhost:3000/user/password/resetPassword/${encodedId}`;
+        const resetLink = `https://authmonkey.onrender.com/user/password/resetPassword/${encodedId}`;
         const reciever = {
             from: process.env.MAIL_ID,
             to: user.email,
