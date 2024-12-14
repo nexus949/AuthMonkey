@@ -1,196 +1,100 @@
-html, body{
+html,
+body {
     overflow-x: hidden;
 }
 
 body {
     width: 100vw;
     height: 100dvh;
+    max-height: 100vh;
     background-color: var(--body-color);
 }
 
-
 .home-container {
     width: 100%;
-    height: 100%;
-    max-width: 1000px;
+    min-height: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    padding: 0 15px;
 }
 
-.hero {
-    padding: 40px 20px 50px 20px;
-}
-
-.hero h1{
+.title {
     font-size: 80px;
+    font-family: "Dela Gothic One", sans-serif;
     color: var(--primary-color);
-    font-family: "Dela Gothic One", serif;;
     font-weight: 700;
-    margin: 0 0 10px;
-}
-
-.hero p{
-    font-size: 20px;
-    color: var(--primary-font-color);
-    font-family: "Dela Gothic One", serif;
-    margin: 10px 0 20px;
-}
-
-.cta-button{
-    width: 200px;
-    height: 50px;
-    padding: 5px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 15px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #4A7CD9; 
-}
-
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px 20px;
-}
-
-.feature-card:nth-child(1), .feature-card:nth-child(3){
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-.feature-card {
-    border-radius: 8px;
-    padding: 22px;
-    width: 280px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.feature-card > *{
-    cursor: pointer;
-}
-
-.feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-}
-
-.feature-card h3 {
-    font-size: 24px;
     margin-bottom: 10px;
 }
 
-.feature-card p {
-    font-size: 16px;
-}
-
-.fa-solid {
+.subTitle {
     font-size: 28px;
-    margin-bottom: 15px;
 }
 
-.already-have-an-accout, .login-button{
-    font-size: 20px;
-    font-weight: 600;
-    padding: 20px 0 20px 0;
+.buttons{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-button{
-    color: var(--primary-color);
-    text-decoration: none;
+.login-button,
+.register-button, .github-button {
+    width: 200px;
+    height: auto;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
     cursor: pointer;
-    padding: 0;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--secondary-color);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 0 15px 25px;
 }
 
-.login-button:hover{
-    text-decoration: underline;
+.login-button:after,
+.register-button:after, .github-button:after {
+    content: "";
+    background-color: var(--primary-color);
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
 }
 
-.footer {
-    padding: 20px;
-    font-size: 12px;
-    margin: 30px 0 0 0;
+.github-button:after{
+    background-color: var(--primary-font-color);
 }
 
-@media (max-width: 768px) {
-    .hero {
-        padding: 25px 20px;
-    }
-
-    .hero h1 {
-        font-size: 50px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .cta-button {
-        width: 180px;
-        font-size: 16px;
-    }
-
-    .features {
-        padding: 20px 10px;
-    }
-
-    .feature-card {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .feature-card h3 {
-        font-size: 20px;
-    }
-
-    .feature-card p {
-        font-size: 14px;
-    }
-
-    .already-have-an-accout, .login-button {
-        font-size: 16px;
-    }
-
-    .already-have-an-accout{
-        padding: 15px 0 15px 0;
-    }
+.login-button:hover:after,
+.register-button:hover:after, .github-button:hover:after {
+    top: 0px;
+    left: 0px;
 }
 
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 40px;
-    }
+.fa-brands{
+    font-size: 22px;
+    margin-left: 15px;
+}
 
-    .hero p {
-        font-size: 14px;
-    }
+@media (min-width: 768px) {
 
-    .cta-button {
-        width: 150px;
-        font-size: 14px;
-    }
-
-    .footer {
-        font-size: 10px;
-    }
-
-    .footer a {
-        font-size: 10px;
+    .login-button,
+    .register-button {
+        padding: 13px 50px 13px;
     }
 }

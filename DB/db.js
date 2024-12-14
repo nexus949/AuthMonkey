@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dbURL = 'mongodb://localhost:27017/BudgetBuddy';
-mongoose.connect(dbURL);
+mongoose.connect(process.env.db_REMOTE_URL || dbURL);
 
 let db = mongoose.connection;
 

@@ -1,6 +1,5 @@
 const path = require('node:path');
-const { generateToken } = require('./../auth.js');
-const { hashPassword, verifyPassword } = require('./../encrypt.js');
+const { hashPassword, verifyPassword, encodeId, decodeId } = require('./../encrypt.js');
 const userModel = require('./../DB/userSchema.js');
 
 async function getSettingsPage(req, res){
@@ -17,7 +16,7 @@ async function getSettingsPage(req, res){
 
 async function updateInfo(req, res){
     try {
-        let id = req.user.id
+        let id = decodeId(req.user.id);
         let { firstName, lastName, email, password } = req.body;
 
         let existingUser = await userModel.findById(id);
@@ -51,7 +50,7 @@ async function logoutUser(req, res){
 
 async function changeUserPassword(req, res){
     try{
-        const id = req.user.id;
+        const id = decodeId(req.user.id);
         const { currentPassword, newPassword, confirmNewPassword } = req.body;
         if(!currentPassword || !newPassword || !confirmNewPassword) return res.status(400).json({ message: "Password is required" });
     
@@ -73,7 +72,7 @@ async function changeUserPassword(req, res){
 
 async function deleteAnUser(req, res){
     try{
-        const id = req.user.id;
+        const id = decodeId(req.user.id);
         const { password } = req.body;
         if(!password) return res.status(400).json({ message: "Password is required" });
     

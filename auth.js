@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+//basic token authntication
 const authenticate = (req, res, next) => {
     const token = req.cookies.authToken;
 
@@ -21,8 +22,29 @@ const authenticate = (req, res, next) => {
     next();
 }
 
-const generateToken = (reqData) => {
-    return jwt.sign(reqData, process.env.JWT_SECRET_KEY_, { expiresIn: '5000s' });
+//token authentication for password reset(forgot password) request
+const authenticateResetPassReq = (req, res, next) => {
+    const token = req.cookies.resetPassToken;
+
+    req.resetToken = null;
+
+    if(token){
+        try{
+            //verify the token
+            const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY_);
+
+            req.resetToken = decodedToken;
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+    next();
 }
 
-module.exports = { authenticate, generateToken };
+const generateToken = (reqData, expiry) => {
+    return jwt.sign(reqData, process.env.JWT_SECRET_KEY_, { expiresIn: `${expiry}s` });
+}
+
+module.exports = { authenticate, generateToken, authenticateResetPassReq };

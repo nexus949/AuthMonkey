@@ -1,188 +1,78 @@
-html, body{
+html,
+body {
     overflow-x: hidden;
 }
 
-body{
+body {
     width: 100vw;
-    height: 100vh;
+    min-height: 100dvh;
     background-color: var(--body-color);
 }
 
-.dashboard-container{
+.dashboard-container {
     width: 50%;
-    height: 100%;
+    min-height: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    /* border: 2px solid black; */
-    padding: 15px;
-}
-
-.greetings h1{
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 40px;
-}
-
-.greetings h3, .insight-month{
-    font-weight: 600;
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.chart-sub-container, .input-sub-container, .summary-sub-container, .expense-sub-container{
-    margin-bottom: 20px;
-    background-color: var(--secondary-color);
-    border: none;
-    box-shadow: var(--primary-shadows);
-}
-
-.chart-sub-container{
-    width: 100%;
-    height: 250px;
-}
-
-.summary-sub-container{
-    width: 100%;
-    height: 100px;
-}
-
-.summary{
-    /*width and height full as its container "summary-sub-container"*/
-    width: 100%;
-    height: 100%;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary-color);
-    border-radius: 6.5px;
-}
-
-.summary > div{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--secondary-color);
+    padding: 0 15px 15px;
 }
 
-.input-sub-container{
+.logo {
+    margin-bottom: 0;
+}
+
+.greetings {
     width: 100%;
-    height: 250px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3em;
-    box-shadow: none;
-    background-color: var(--body-color);
+    text-align: center;
 }
 
-.expense-input, .set-budget{
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-    background-color: var(--secondary-color);
-    box-shadow: var(--primary-shadows);
-}
-
-.expense-input{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.expense-title, .expense-amount, .expense-type, .expense-date{
-    margin-bottom: 12px;
-    height: 40px;
-    padding: 5px;
-    cursor: text;
-}
-
-.expense-title{
-    width: 100%;
-}
-
-.expense-amount, .expense-type{
-    width: calc(50% - 5px);
-}
-
-.expense-amount{
-    margin-right: 10px;
-}
-
-.expense-date{
-    width: 65%;
-    margin-right: 20px;
-}
-
-.set-budget-input{
-    width: 100%;
-    height: 40px;
-    margin: 10px 0;
-    padding: 5px;
-}
-
-.add-expense-button, .set-budget-button, .insert-today-button{
-    width: 100px;
-    height: 40px;
-    border: none;
-    border-radius: 3px;
-    padding: 5px;
-    cursor: pointer;
-    outline: none;
-    background-color: var(--primary-color);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    color: var(--secondary-color);
-    transition: all 0.12s ease;
-}
-
-.insert-today-button{
-    width: 30%;
-    font-size: 14px;
-}
-
-.add-expense-button:active, .set-budget-button:active, .insert-today-button:active{
-    scale: 0.92;
-}
-
-.expense-sub-container{
-    width: 100%;
-    min-height: 50px;
-    height: fit-content;
-    padding: 20px;
-}
-
-.expense-list-tag{
-    margin-bottom: 15px;
-}
-
-.expenses{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-    border-left: 4px solid var(--primary-color);
-    padding: 0 15px;
-    margin: 0 0 15px 0;
-    font-size: 18px;
-}
-
-.fa-solid{
-    cursor: pointer;
+.greetings h1 {
     color: var(--primary-color);
-    width: 20%;
+    font-weight: 700;
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-.expense-list-title{
-    width: 40%;
+.greetings h3 {
+    font-size: 26px;
 }
 
-.expense-list-amount{
-    width: 20%;
+.features {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 20px;
 }
 
-footer{
+.go-to-settings {
+    width: 300px;
+    height: 50px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-size: 20px;
+    outline: none;
+    text-align: center;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.fa-solid{ margin-left: 10px; }
+
+.go-to-settings:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+}
+
+footer {
     width: 100%;
     height: fit-content;
     text-align: center;

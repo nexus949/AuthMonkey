@@ -1,4 +1,5 @@
 const { authenticate, generateToken } = require('./../auth.js');
+const { encodeId, decodeId } = require('./../encrypt.js')
 const path = require('node:path');
 const userModel = require('./../DB/userSchema.js');
 
@@ -16,7 +17,7 @@ async function getDashboardPage(req, res){
 
 async function getUserData(req, res){
     try{
-        const id = req.user.id;
+        const id = decodeId(req.user.id);
     
         const user = await userModel.findById(id).select('-password -_id');
         if(!user) return res.status(404).json("User not found !");

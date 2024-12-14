@@ -1,17 +1,16 @@
 import * as utils from '/scripts/userUtils.js'
 
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener('DOMContentLoaded', () =>{
     let hasPasswordMsg = false;
-    let passwordField = document.querySelector('.password');
-    let passwordFieldLabel = document.querySelector('.password-label');
+    let passwordField = document.querySelector('.reset-password');
+    let passwordFieldLabel = document.querySelector('.reset-password-label');
 
-    let submitButton = document.querySelector('.register-button');
+    let resetButton = document.querySelector('.reset-password-button');
     const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
     let hasConfirmPasswordMsg = false;
-    let confirmPasswordField = document.querySelector('.confirm-password');
-    let confirmPasswordFieldLabel = document.querySelector('.confirm-password-label');
+    let confirmPasswordField = document.querySelector('.reset-confirm-password');
+    let confirmPasswordFieldLabel = document.querySelector('.reset-confirm-password-label');
 
     passwordField.addEventListener('input', () => {
         let isValid = regex.test(passwordField.value);
@@ -50,48 +49,35 @@ document.addEventListener('DOMContentLoaded', () => {
     //this function dynamically enables the submit button provided both the password and the confirm password are the same
     function checkPasswords() {
         if (passwordField.value === confirmPasswordField.value) {
-            submitButton.disabled = false;
+            resetButton.disabled = false;
         }
         else {
-            submitButton.disabled = true;
+            resetButton.disabled = true;
         }
     }
+})
 
-    document.querySelector('#register-form').addEventListener('submit', async function (e) {
-        e.preventDefault();
+document.querySelector('#reset-password-form').addEventListener('submit', async function(e){
+    e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const data = {};
+    const formData = new FormData(e.target);
+    const data = {};
 
-        formData.forEach((value, key) => data[key] = value);
+    formData.forEach((value, key) => data[key] = value);
 
-        try {
-            const response = await fetch('/user/register', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data)
-            });
+    try {
+        const response = await fetch('/user/password/resetPassword', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        });
 
-            if (response.ok) {
-                window.location.href = '/user/dashboard';
-            }
-            else {
-                const errorData = await response.json();
-                if(response.status === 409){
-                    utils.showErrorMsg(document.querySelector('.email-label'), errorData.message);
-                }
-                else if(response.status === 400){
-                    utils.showErrorMsg(document.querySelector('.email-label'), errorData.message);
-                }
-                else{
-                    alert(errorData.message);
-                }
-            }
-        }
-        catch (error) {
-            console.error("Error:", error);
-        }
-    })
+        const responseData = await response.json();
+        alert(responseData.message);
+    }
+    catch (error) {
+        console.error("Error:", error);
+    }
 })

@@ -4,18 +4,29 @@ html, body{
 
 body{
     width: 100vw;
-    height: 100dvh;
+    min-height: 100dvh;
     background-color: var(--body-color);
 }
 
 .settings-container{
-    width: 50%;
-    height: 100%;
+    width: 55%;
+    min-height: 100%;
     max-width: 1200px;
     min-width: 370px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 0 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     position: relative;
+}
+
+.logo{ margin-bottom: 0; }
+
+.settings-title{
+    width: 100%;
+    padding-top: 10px;
 }
 
 .settings-heading{
@@ -190,7 +201,9 @@ footer{
 
 .deletion-confirmation-popup{ height: 330px; }
 
-.logo{
+.popup-logo{
+    width: 100px;
+    height: 40px;
     margin-bottom: 15px;
 }
 
@@ -287,6 +300,15 @@ footer{
         width: auto;
         min-width: 475px;
         height: auto;
+    }
+
+    /*Settings page specific navbar style*/
+    .navbar{
+        padding: 0 15px;
+    }
+
+    .navElement > a{
+        font-size: 16px;
     }
 }
 

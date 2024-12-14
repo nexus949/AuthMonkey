@@ -8,21 +8,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Teko:wght@300..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/rootStyles.css">
-    <link rel="stylesheet" href="/styles/settings.css">
     <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/settings.css">
 </head>
 
 <body>
     <div class="settings-container">
 
         <nav class="navbar">
-            <img src="/images/budget-buddy.png" alt="Logo" class="logo">
+            <img src="/images/auth-monkey.png" alt="Logo" class="logo">
             <ul class="navEl">
                 <li class="navElement"><a href="/user/dashboard">Dashboard</a></li>
                 <li class="navElement"><a href="/user/settings" style="margin-right: 0;">Settings</a></li>
@@ -30,7 +30,7 @@
         </nav>
 
         <div class="deletion-confirmation-popup">
-            <img src="/images/budget-buddy.png" alt="logo" class="logo">
+            <img src="/images/budget-buddy.png" alt="logo" class="popup-logo">
 
             <p class="account-deletion-warning">This action will permanently delete your account and all associated
                 data. Please note that this process is irreversible.</p>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="logout-popup">
-            <img src="/images/budget-buddy.png" alt="logo" class="logo">
+            <img src="/images/budget-buddy.png" alt="logo" class="popup-logo">
 
             <p class="logout-warning">This action will log you out of your account, you would need to enter your
                 password the next time you open your account.</p>
@@ -56,8 +56,8 @@
             </div>
         </div>
 
-        <h1 class="settings-heading">Settings</h1>
-        <hr>
+        <div class="settings-title"> <h1 class="settings-heading">Settings</h1>
+            <hr></div>
 
         <div class="profile">
             <h2 class="profile-heading">Profile</h2>
@@ -131,7 +131,7 @@
 
         <hr>
 
-        <footer>Made By Aritra © 2024</footer>
+        <footer>&copy; 2024 Auth Monkey | Made By Aritra</footer>
     </div>
 
     <script type="module" src="/scripts/settings.js" defer></script>

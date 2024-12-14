@@ -7,23 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Teko:wght@300..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/rootStyles.css">
-    <link rel="stylesheet" href="/styles/dashboard.css">
     <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 
     <title>Budget Buddy | Dashboard</title>
 </head>
 
 <body>
     <div class="dashboard-container">
-
         <nav class="navbar">
-            <img src="/images/budget-buddy.png" alt="Logo" class="logo">
+            <img src="/images/auth-monkey.png" alt="Logo" class="logo">
             <ul class="navEl">
                 <li class="navElement"><a href="/user/dashboard">Dashboard</a></li>
                 <li class="navElement"><a href="/user/settings" style="margin-right: 0;">Settings</a></li>
@@ -32,87 +31,20 @@
         
         <div class="greetings">
             <h1>Hi Alex,</h1>
-            <h3>here are your expense insights for <span class="insight-month">October</span> Month.</h3>
+            <h3>You are now Logged In.</h3>
         </div>
 
-        <div class="chart-sub-container">
-            <div class="chart">
-                <canvas id="expense-chart-canvas"></canvas>
+        <section class="features">
+            <p>This is Your Empty Dashboard. Feel free to add anything you want here.</p>
+            <p>Check Out the Settings Page to update your Info, Logout and Account Deletion.</p>
+
+            <div class="buttons">
+                <a href="/user/settings"><button class="go-to-settings" role="button">Go To Settings Page<i class="fa-solid fa-arrow-right"></i></button></a>
             </div>
-        </div>
-
-        <div class="summary-sub-container">
-
-            <div class="summary">
-                <div class="budget">
-                    <p>Budget</p>
-                    <p>1500</p>
-                </div>
-                <div class="total-spent">
-                    <p>Total Spent</p>
-                    <p>500</p>
-                </div>
-                <div class="balance">
-                    <p>Balance</p>
-                    <p>5000</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="input-sub-container">
-            <div class="expense-input">
-
-                <h3 class="expense-tag">Expense</h3>
-
-                <input type="text" placeholder="Expense Title" class="expense-title">
-                <input type="number" placeholder="Expense Amount" class="expense-amount">
-
-                <select id="expenseType" class="expense-type">
-                    <option value="debit">Debit</option>
-                    <option value="credit">Credit</option>
-                </select>
-
-                <input type="date" placeholder="Enter expense date"  class="expense-date"></input>
-                <button class="insert-today-button">Insert Today</button>
-
-                <button class="add-expense-button">Add Expense</button>
-            </div>
-
-            <div class="set-budget">
-                <h3 class="budget-tag">Budget</h3>
-                <input type="number" placeholder="Enter budget to set" class="set-budget-input">
-                <button class="set-budget-button">Set Budget</button>
-            </div>
-        </div>
-
-        <div class="expense-sub-container">
-            <h2 class="expense-list-tag">Expense List</h2>
-
-            <div class="expenses">
-                <p class="expense-list-title">Rent</p>
-                <p class="expense-list-amount">1700</p>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <i class="fa-solid fa-trash-can"></i>
-            </div>
-
-            <div class="expenses">
-                <p class="expense-list-title">Groceries</p>
-                <p class="expense-list-amount">500</p>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <i class="fa-solid fa-trash-can"></i>
-            </div>
-            
-            <div class="expenses">
-                <p class="expense-list-title">Travel</p>
-                <p class="expense-list-amount">150</p>
-                <i class="fa-solid fa-pen-to-square"></i>
-                <i class="fa-solid fa-trash-can"></i>
-            </div>
-        </div>
+        </section>
 
         <footer>
-            <p class="footer-msg">Made by Aritra</p>
+            <p class="footer-msg">&copy; 2024 Auth Monkey | Made by Aritra</p>
         </footer>
     </div>
 
