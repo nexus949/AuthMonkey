@@ -1,6 +1,7 @@
 .navbar{
     width: 100vw;
     height: 80px;
+    min-width: 370px;
     padding: 0 175px;
     display: flex;
     align-items: center;
@@ -12,7 +13,7 @@
 .navEl{
     display: flex;
     list-style-type: none;
-    padding: 10px 0 10px 10px;
+    padding: 10px;
 }
 
 .navElement > a{
@@ -34,20 +35,27 @@
     }
 }
 
+@media(max-width: 900px){
+    .navbar{
+        padding: 0 50px 0 25px;
+    }
+}
+
 @media(max-width: 768px){
     .navbar{
+        height: 50px;
         padding: 0 15px;
     }
 
     .navElement > a{
         font-size: 16px;
     }
-
 }
 
 @media(max-width: 480px){
     .navbar{
         padding: 0 10px;
+        height: 50px;
     }
 
     .logo{

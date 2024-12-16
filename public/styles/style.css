@@ -35,7 +35,7 @@ body {
     font-size: 28px;
 }
 
-.buttons{
+.buttons {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -44,7 +44,8 @@ body {
 }
 
 .login-button,
-.register-button, .github-button {
+.register-button,
+.github-button {
     width: 200px;
     height: auto;
     font-size: 22px;
@@ -58,13 +59,13 @@ body {
     background-color: rgba(0, 0, 0, 0);
     color: var(--secondary-color);
     user-select: none;
-    -webkit-user-select: none;
     touch-action: manipulation;
     margin: 0 15px 25px;
 }
 
 .login-button:after,
-.register-button:after, .github-button:after {
+.register-button:after,
+.github-button:after {
     content: "";
     background-color: var(--primary-color);
     width: 100%;
@@ -76,17 +77,18 @@ body {
     transition: 0.2s;
 }
 
-.github-button:after{
+.github-button:after {
     background-color: var(--primary-font-color);
 }
 
 .login-button:hover:after,
-.register-button:hover:after, .github-button:hover:after {
+.register-button:hover:after,
+.github-button:hover:after {
     top: 0px;
     left: 0px;
 }
 
-.fa-brands{
+.fa-brands {
     font-size: 22px;
     margin-left: 15px;
 }
@@ -96,5 +98,27 @@ body {
     .login-button,
     .register-button {
         padding: 13px 50px 13px;
+    }
+}
+
+@media(max-width: 480px) {
+    .title {
+        font-size: 60px;
+    }
+
+    .subTitle {
+        font-size: 22px;
+    }
+
+    .login-button,
+    .register-button,
+    .github-button {
+        width: 150px;
+        height: auto;
+        font-size: 16px;
+    }
+
+    footer p{
+        font-size: 15px;
     }
 }

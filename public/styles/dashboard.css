@@ -78,3 +78,26 @@ footer {
     text-align: center;
     margin: 50px 0;
 }
+
+@media(max-width: 480px){
+    .greetings h1 {
+        font-size: 40px;
+    }
+    
+    .greetings h3 {
+        font-size: 20px;
+    }
+
+    .features {
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
+    .go-to-settings {
+        width: 250px;
+        height: 40px;
+        margin-top: 25px;
+        font-size: 18px;
+        outline: none;
+    }
+}

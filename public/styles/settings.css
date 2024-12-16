@@ -9,12 +9,12 @@ body{
 }
 
 .settings-container{
-    width: 55%;
+    width: 50%;
     min-height: 100%;
     max-width: 1200px;
     min-width: 370px;
     margin: 0 auto;
-    padding: 0 15px 15px;
+    padding: 0 15px 0 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -190,7 +190,7 @@ footer{
     text-align: justify;
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 48%;
     transform: translate(-50%, -50%);
     background-color: #E5E5F0;
     display: none;
@@ -291,22 +291,13 @@ footer{
 @media(max-width: 900px){
     .settings-container{
         width: 100%;
-        padding: 15px;
+        padding: 0 15px 0 15px;
     }
 
     .deletion-confirmation-popup, .deletion-activation-popup, .logout-popup{
         width: auto;
         min-width: 475px;
         height: auto;
-    }
-
-    /*Settings page specific navbar style*/
-    .navbar{
-        padding: 0 15px;
-    }
-
-    .navElement > a{
-        font-size: 16px;
     }
 }
 
@@ -342,7 +333,11 @@ footer{
     }
 
     .email-input-field{
-        width: 340px;
+        width: 350px;
+    }
+
+    .password-input-field{
+        width: 350px;
     }
 
     .info-submit-button, .change-password-button, .logout-button, .delete-account-button, .reset-pass-button{
