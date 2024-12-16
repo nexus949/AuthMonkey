@@ -12,7 +12,7 @@ body{
     width: 50%;
     min-height: 100%;
     max-width: 1200px;
-    min-width: 370px;
+    /* min-width: 370px; */
     margin: 0 auto;
     padding: 0 15px 0 15px;
     display: flex;
@@ -183,7 +183,7 @@ footer{
 
 .deletion-confirmation-popup, .logout-popup{
     width: 600px;
-    height: 300px;
+    height: auto;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 15px;
@@ -197,20 +197,15 @@ footer{
     z-index: 1000; /* Above the overlay */
 }
 
-.deletion-confirmation-popup{ height: 330px; }
-
-.popup-logo{
-    width: 100px;
-    height: 40px;
-    margin-bottom: 15px;
-}
-
 .account-deletion-warning, .account-deletion-confirmation{
     font-size: 15px;
     margin: 15px 0;
 }
 
-.logout-popup p{ margin-bottom: 20px; }
+.logout-popup p{ 
+    margin-bottom: 20px; 
+    width: auto;
+}
 
 .account-deletion-confirmation, .logout-confirmation{
     font-weight: 600;
@@ -320,7 +315,7 @@ footer{
 
     .first-name-input-field, .last-name-input-field, .email-input-field, .confirm-current-password{
         font-size: 14px;
-        width: 165px;
+        width: 150px;
     }
 
     .change-password-description, .logout-description, .delete-account-description{
@@ -332,12 +327,8 @@ footer{
         margin-left: 0;
     }
 
-    .email-input-field{
-        width: 350px;
-    }
-
-    .password-input-field{
-        width: 350px;
+    .email-input-field, .password-input-field{
+        width: 320px;
     }
 
     .info-submit-button, .change-password-button, .logout-button, .delete-account-button, .reset-pass-button{
@@ -347,7 +338,7 @@ footer{
 
     .deletion-confirmation-popup, .deletion-activation-popup, .logout-popup{
         width: auto;
-        min-width: 400px;
+        min-width: 320px;
         height: auto;
     }
 }
