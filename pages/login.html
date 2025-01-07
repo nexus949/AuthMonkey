@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="/styles/rootStyles.css">
     <link rel="stylesheet" href="/styles/login.css">
     <title>Auth Monkey | User Login</title>
@@ -21,20 +25,20 @@
     <div class="login-container">
 
         <form action="/login" method="post" id="login-form">
-           <img class="logo" src="/images/auth-monkey.png">
+            <img class="logo" src="/images/auth-monkey.png">
 
             <h2 class="login-heading">Login</h2>
 
             <label for="email" class="email-label">Email</label>
             <input type="text" placeholder="Enter your Email" class="email" name="email" required>
-           
+
             <label for="password" class="password-label">Password</label>
             <input type="password" placeholder="Enter your Password" class="password" name="password" required>
             <div class="forgot-password">
                 <a href="/user/password/forgotPassword">Forgot Password ?</a>
             </div>
 
-            <button type="submit" class="login-button">Login  <i class="fa-solid fa-arrow-right"></i></button>
+            <button type="submit" class="login-button">Login <i class="fa-solid fa-arrow-right"></i></button>
             <div class="register">
                 <p>Dont't have an account ? <a href="/user/register">Register Now</a></p>
             </div>

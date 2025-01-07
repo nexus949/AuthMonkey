@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
     <link rel="stylesheet" href="/styles/rootStyles.css">
     <link rel="stylesheet" href="/styles/navbar.css">
     <link rel="stylesheet" href="/styles/settings.css">
@@ -56,8 +60,10 @@
             </div>
         </div>
 
-        <div class="settings-title"> <h1 class="settings-heading">Settings</h1>
-            <hr></div>
+        <div class="settings-title">
+            <h1 class="settings-heading">Settings</h1>
+            <hr>
+        </div>
 
         <div class="profile">
             <h2 class="profile-heading">Profile</h2>
@@ -67,7 +73,8 @@
 
                     <div class="first-name">
                         <label for="firstName" class="label-for-first-name">First Name</label>
-                        <input name="firstName" value="" class="first-name-input-field" placeholder="First Name" required>
+                        <input name="firstName" value="" class="first-name-input-field" placeholder="First Name"
+                            required>
                     </div>
 
                     <div class="last-name">
@@ -84,10 +91,12 @@
 
                 <div class="password">
                     <label for="password" class="label-for-password">Password</label>
-                    <input name="password" value="" class="password-input-field" type="password" placeholder="Enter your current Password" required>
+                    <input name="password" value="" class="password-input-field" type="password"
+                        placeholder="Enter your current Password" required>
                 </div>
 
-                <button type="submit" class="info-submit-button disabled-buttons" disabled>Save<i class="fa-solid fa-floppy-disk"></i></button>
+                <button type="submit" class="info-submit-button disabled-buttons" disabled>Save<i
+                        class="fa-solid fa-floppy-disk"></i></button>
             </form>
 
         </div>
@@ -101,13 +110,17 @@
                 <p class="change-password-title">Change Password</p>
                 <p class="change-password-description">Change your password to secure your account. This will log you
                     out and you have to enter your password to get access to your account.</p>
-                
-                <button class="change-password-button .non-disabled-buttons">Change Password<i class="fa-solid fa-lock"></i></button>
+
+                <button class="change-password-button .non-disabled-buttons">Change Password<i
+                        class="fa-solid fa-lock"></i></button>
 
                 <form action="" id="change-password-send-request-form">
-                    <input type="password" name="currentPassword" placeholder="Enter current Password" class="current-password-field" required>
-                    <input type="password" name="newPassword" placeholder="Enter new Password" class="new-password-field" required>
-                    <input type="password" name="confirmNewPassword" placeholder="Confirm New Password" class="confirm-new-password-field" required>
+                    <input type="password" name="currentPassword" placeholder="Enter current Password"
+                        class="current-password-field" required>
+                    <input type="password" name="newPassword" placeholder="Enter new Password"
+                        class="new-password-field" required>
+                    <input type="password" name="confirmNewPassword" placeholder="Confirm New Password"
+                        class="confirm-new-password-field" required>
 
                     <button type="submit" class="update-pass-button">Update Password</button>
                 </form>
