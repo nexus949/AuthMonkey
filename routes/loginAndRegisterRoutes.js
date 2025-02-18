@@ -28,7 +28,7 @@ router.get('/password/forgotPassword', getForgotPasswordPage);
 router.post('/password/forgotPassword', sendResetPassLink);
 
 //reset password page get and post
-router.get('/password/resetPassword/:id', authenticateResetPassReq, getResetPasswordPage);
-router.post('/password/resetPassword', authenticateResetPassReq, resetPassword);
+router.get('/password/resetPassword/:id', getResetPasswordPage);
+router.post('/password/resetPassword', resetPassword);
 
 module.exports = router;

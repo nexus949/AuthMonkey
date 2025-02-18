@@ -165,6 +165,8 @@ async function getResetPasswordPage(req, res){
 
         //this id is sent through params
         const paramId = req.params.id;
+        if(!paramId) return res.status(401).redirect('/user/login');
+        
         const actualId = decodeId(paramId);
         const user = await userModel.findById(actualId);
 
