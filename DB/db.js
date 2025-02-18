@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dbURL = 'mongodb://localhost:27017/AuthMonkey';
-// mongoose.connect(process.env.db_REMOTE_URL || dbURL);
-mongoose.connect(dbURL);
+mongoose.connect(process.env.db_REMOTE_URL || dbURL);
+// mongoose.connect(dbURL);
 
 let db = mongoose.connection;
 
