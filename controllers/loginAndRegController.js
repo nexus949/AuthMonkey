@@ -3,6 +3,7 @@ const { hashPassword, verifyPassword, encodeId, decodeId } = require('./../encry
 const { generateToken } = require('./../auth.js');
 const userModel = require('./../DB/userSchema.js');
 const nodemailer = require('nodemailer');
+const { authenticateResetPassReq } = require('./../auth.js');
 
 async function getRegisterPage(req, res) {
     try {
@@ -166,7 +167,7 @@ async function getResetPasswordPage(req, res){
         //this id is sent through params
         const paramId = req.params.id;
         if(!paramId) return res.status(401).redirect('/user/login');
-        
+
         const actualId = decodeId(paramId);
         const user = await userModel.findById(actualId);
 
