@@ -124,11 +124,8 @@ async function sendResetPassLink(req, res) {
         if (!user) return res.status(404).json({ message: "No User Found !" });
 
         const encodedId = encodeId(user.id);
-        const payload = { 
-            id: encodedId,
-        }
-        let token = generateToken(payload, 600);
-        console.log(token);
+        const payload = { id: encodedId };
+        let token = generateToken(payload, 600); //token valid for 10 minutes
 
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -151,12 +148,11 @@ async function sendResetPassLink(req, res) {
             If you did not request this, please ignore this email.`
         }
 
-        await transporter.sendMail(reciever);
+        user.resetTokens = token; //set the resetToken
+        await user.save();
 
-        res.cookie('resetPassToken', token, {
-            httpOnly: true,
-            sameSite: 'lax'
-        }).status(200).json({ message: "Check your email" });
+        await transporter.sendMail(reciever);
+        res.status(200).json({ message: "A password reset link has been sent to your email !"})
     }
     catch (error) {
         console.log(error);
@@ -167,16 +163,17 @@ async function sendResetPassLink(req, res) {
 async function getResetPasswordPage(req, res){
     try {
 
-        //this id is sent through JWT
-        let id = req.resetToken.id;
-
         //this id is sent through params
         const paramId = req.params.id;
+        const actualId = decodeId(paramId);
+        const user = await userModel.findById(actualId);
 
-        //check if both the ids match or not
-        if(paramId !== id) return res.status(401).redirect('/user/login');
+        if(!user) return res.status(401).redirect('/user/login');
 
-        if(!req.resetToken) return res.status(401).redirect('/user/login');
+        if(!user.resetTokens || !authenticateResetPassReq(user.resetTokens)){ 
+            return res.status(401).redirect('/user/login'); //check if the reset token is valid or not
+        }
+
         res.status(200).sendFile(path.join(__dirname, './../pages/resetPassword.html'));
     }
     catch (error) {

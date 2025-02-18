@@ -23,24 +23,14 @@ const authenticate = (req, res, next) => {
 }
 
 //token authentication for password reset(forgot password) request
-const authenticateResetPassReq = (req, res, next) => {
-    const token = req.cookies.resetPassToken;
-
-    req.resetToken = null;
-
-    if(token){
-        try{
-            //verify the token
-            const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY_);
-
-            req.resetToken = decodedToken;
-        }
-        catch(error){
-            console.log(error);
-        }
+const authenticateResetPassReq = (token) => {
+    try{
+        jwt.verify(token, process.env.JWT_SECRET_KEY_);  //throws error if token is invalid
+        return true;
     }
-
-    next();
+    catch(error){
+        return false;
+    }
 }
 
 const generateToken = (reqData, expiry) => {
