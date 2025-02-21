@@ -187,17 +187,24 @@ async function getResetPasswordPage(req, res){
 
 async function resetPassword(req, res){
     try {
-        const id = decodeId(req.resetToken.id);
-        const { password } = req.body;
+        const { password, encodedId } = req.body;
+        let id = decodeId(encodedId);
 
         let user = await userModel.findById(id);
         if(!user) return res.status(404).json({ message: "User Not Found !" });
+
+        let isJWTValid = authenticateResetPassReq(user.resetTokens);
+        if(!isJWTValid) return res.status(401).redirect('/user/login');
 
         let matchesOldPassword = await verifyPassword(user.password, password);
         if(matchesOldPassword) return res.status(400).json( { message: "New Password cannot be the same as Old Password !" });
 
         let newHashedPassword = await hashPassword(password);
         await userModel.findByIdAndUpdate(id, { password: newHashedPassword });
+
+        user.resetTokens = null; //when the password is reset successfully invalidate and clear the JWT immidiately
+        await user.save();
+
         res.status(200).json({ message: "Password Updated Successfully ! Please Login to Access your Account. " });
     }
     catch (error) {

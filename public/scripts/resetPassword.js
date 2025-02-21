@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', () =>{
     }
 })
 
+//get encodedUserID
+function getEncodedUserID(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedUserId = urlParams.get('id'); 
+
+    document.querySelector('#encodedId').value = encodedUserId; //store the encodedID for the post request
+}
+getEncodedUserID();
+
 document.querySelector('#reset-password-form').addEventListener('submit', async function(e){
     e.preventDefault();
 
