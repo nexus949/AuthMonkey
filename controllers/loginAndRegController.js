@@ -191,6 +191,7 @@ async function resetPassword(req, res){
         let id = decodeId(encodedId);
 
         let user = await userModel.findById(id);
+        console.log(user.email, id);
         if(!user) return res.status(404).json({ message: "User Not Found !" });
 
         let isJWTValid = authenticateResetPassReq(user.resetTokens);
