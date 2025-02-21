@@ -190,7 +190,6 @@ async function resetPassword(req, res){
         const { password, encodedId } = req.body;
         let id = decodeId(encodedId);
 
-        console.log(id);
         let user = await userModel.findById(id);
         if(!user) return res.status(404).json({ message: "User Not Found !" });
 

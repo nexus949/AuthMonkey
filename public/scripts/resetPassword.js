@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 //get encodedUserID
 function getEncodedUserID(){
-    const urlParams = new URLSearchParams(window.location.search);
-    const encodedUserId = urlParams.get('id'); 
+    const url = window.location.pathname;
+    const encodedUserId = url.split('/').pop(); //extract the last param
 
     document.querySelector('#encodedId').value = encodedUserId; //store the encodedID for the post request
 }
